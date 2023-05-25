@@ -1,0 +1,57 @@
+html {
+  font-size: 62.5%;
+}
+
+.CompanyOutStanding-container {
+  margin-top: 5rem;
+  .slick-prev,
+  .slick-next {
+    height: 20px !important;
+    width: 20px !important;
+    border-radius: 50%;
+    z-index: 10;
+    background: gray !important;
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .CompanyOutStanding-content {
+    height: 35rem;
+    width: 60%;
+    margin: 0 auto;
+    h2 {
+      margin-bottom: 2rem;
+    }
+    .CompanyOutStanding-body {
+      .CompanyOutStanding-product {
+        position: relative;
+        height: 30rem;
+        border: 1px solid #f8f5f5;
+        cursor: pointer;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+        background-color: white;
+        img {
+          position: absolute;
+          top: 30%;
+          left: 50%;
+          transform: translate(-50%, -30%);
+        }
+        .CompanyOutStanding-name {
+          display: block;
+          position: absolute;
+          top: 60%;
+          left: 50%;
+          transform: translateX(-50%);
+          text-align: center;
+          font-size: 17px;
+          width: 25rem;
+        }
+        &:hover {
+          border: 2px solid gray;
+          transition: 0.1s linear;
+        }
+      }
+    }
+  }
+}

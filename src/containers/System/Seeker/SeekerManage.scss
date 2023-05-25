@@ -1,0 +1,97 @@
+html {
+  font-size: 62.5%;
+}
+.seeker-manage-create-container {
+  h1 {
+    text-align: center;
+    margin-top: 3rem;
+    color: #2451cc;
+  }
+  h2 {
+    margin-top: 3rem;
+    margin-left: 10rem;
+    font-size: 2rem;
+  }
+  .seeker-manage-create-content {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .seeker-manage-create-form {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .seeker-email {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+    }
+    .seeker-password {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .seeker-firstname {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .seeker-lastname {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .seeker-gender {
+      display: flex;
+      flex-direction: column;
+      width: calc(20% - 1rem);
+
+      margin-top: 2rem;
+    }
+
+    .seeker-phonenumber {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      width: calc(30% - 1rem);
+
+      margin-left: 1rem;
+    }
+    .seeker-address {
+      display: flex;
+      flex-direction: column;
+      width: calc(50% - 1rem);
+      margin-left: 1rem;
+      margin-top: 2rem;
+    }
+    .seeker-image {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+    }
+    select {
+      border: 1px solid rgba(0, 0, 0, 0.274);
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 14px;
+    }
+    select:focus {
+      outline: 2px solid #456cb45e;
+      box-shadow: 1px 1px 10px 2px #3a58aa;
+    }
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.274);
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 14px;
+    }
+    input:focus {
+      outline: 2px solid #456cb45e;
+      box-shadow: 1px 1px 10px 2px #3a58aa;
+    }
+  }
+}

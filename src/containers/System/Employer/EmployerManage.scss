@@ -1,0 +1,92 @@
+html {
+  font-size: 62.5%;
+}
+.employer-manage-create-container {
+  h1 {
+    text-align: center;
+    margin-top: 3rem;
+    color: #2451cc;
+  }
+  h2 {
+    margin-top: 3rem;
+    margin-left: 10rem;
+    font-size: 2rem;
+  }
+  .employer-manage-create-content {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .employer-manage-create-form {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .employer-email {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+    }
+    .employer-password {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .employer-firstname {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .employer-lastname {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .employer-companyname {
+      display: flex;
+      flex-direction: column;
+      width: calc(30% - 1rem);
+      margin-top: 2rem;
+    }
+    .employer-address {
+      display: flex;
+      flex-direction: column;
+      width: calc(70% - 1rem);
+      margin-left: 1rem;
+      margin-top: 2rem;
+    }
+    .employer-phonenumber {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      width: calc((100% / 3) - 1rem);
+    }
+    .employer-position {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem;
+      margin-top: 2rem;
+      width: calc((100% / 3) - 1rem);
+    }
+    .employer-logo {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem;
+      margin-top: 2rem;
+      width: calc((100% / 3) - 1rem);
+    }
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.274);
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 14px;
+    }
+    input:focus {
+      outline: 2px solid #456cb45e;
+      box-shadow: 1px 1px 10px 2px #3a58aa;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+body {
+  box-sizing: border-box;
+}
+.modal-content {
+  width: 60rem;
+}
+.form-group {
+  margin-top: 5px;
+  label {
+    font-size: 17px;
+    color: rgb(14, 116, 233);
+  }
+  input {
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 13px;
+  }
+}
+.save-button {
+  padding: 0 5px;
+  font-size: 15px;
+}
+.cancel-button {
+  padding: 0 5px;
+  font-size: 15px;
+}
