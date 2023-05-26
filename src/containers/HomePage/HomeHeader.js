@@ -4,13 +4,34 @@ import "./HomeHeader.scss";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../utils";
 import { changeLanguageApp } from "../../store/actions";
+import * as actions from "../../store/actions";
 class HomeHeader extends Component {
   changeLanguage = (language) => {
     this.props.changeLanguageApp(language);
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      cityArr: [],
+    };
+  }
+
+  async componentDidMount() {
+    this.props.getCityStart();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.citys !== this.props.citys) {
+      this.setState({
+        cityArr: this.props.citys,
+      });
+    }
+  }
   render() {
+    let citys = this.state.cityArr;
     let language = this.props.language;
-    console.log("check user info", this.props.userInfo);
+
     return (
       <React.Fragment>
         <div className="home-header-container">
@@ -82,10 +103,16 @@ class HomeHeader extends Component {
             </h1>
             <div className="search">
               <div className="search-dropdown">
-                <label>
+                {/* <span>
                   <FormattedMessage id="homeheader.city" />
-                </label>
-                <i className="fas fa-chevron-down"></i>
+                </span> */}
+                <select>
+                  {citys &&
+                    citys.length > 0 &&
+                    citys.map((item, index) => {
+                      return <option key={index}>{item.valueVi}</option>;
+                    })}
+                </select>
               </div>
               <div className="search-text">
                 <i className="fas fa-search"></i>
@@ -118,14 +145,15 @@ class HomeHeader extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
-    userInfo: state.user.userInfo,
     language: state.app.language,
+    citys: state.admin.citys,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     changeLanguageApp: (language) => dispatch(changeLanguageApp(language)),
+    getCityStart: () => dispatch(actions.fetchCityStart()),
   };
 };
 

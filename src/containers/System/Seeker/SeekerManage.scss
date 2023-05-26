@@ -10,10 +10,12 @@ html {
   h2 {
     margin-top: 3rem;
     margin-left: 10rem;
+    padding-top: 3rem;
     font-size: 2rem;
   }
   .seeker-manage-create-content {
     width: 80%;
+    background-color: #f3f3f3;
     margin: 0 auto;
   }
   .seeker-manage-create-form {
@@ -21,7 +23,6 @@ html {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     .seeker-email {
       display: flex;
       flex-direction: column;
@@ -57,41 +58,83 @@ html {
       display: flex;
       flex-direction: column;
       margin-top: 2rem;
-      width: calc(30% - 1rem);
+      width: calc(20% - 1rem);
 
       margin-left: 1rem;
     }
     .seeker-address {
       display: flex;
       flex-direction: column;
-      width: calc(50% - 1rem);
+      width: calc(40% - 1rem);
       margin-left: 1rem;
       margin-top: 2rem;
     }
-    .seeker-image {
+    .seeker-image-container {
       display: flex;
-      flex-direction: column;
+      margin-left: 1rem;
+      width: calc(20% - 1rem);
       margin-top: 2rem;
+      .seeker-image {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+      }
+      .label-upload {
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.466);
+        padding: 5px;
+        i {
+          margin-left: 1rem;
+        }
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+
+      .preview-image {
+        height: 10rem;
+        width: 60%;
+        background-size: contain;
+        object-fit: cover;
+        margin-left: 2rem;
+        cursor: pointer;
+        border: 1px solid gray;
+      }
     }
-    select {
-      border: 1px solid rgba(0, 0, 0, 0.274);
-      border-radius: 5px;
-      padding: 5px;
-      font-size: 14px;
-    }
-    select:focus {
-      outline: 2px solid #456cb45e;
-      box-shadow: 1px 1px 10px 2px #3a58aa;
-    }
-    input {
-      border: 1px solid rgba(0, 0, 0, 0.274);
-      border-radius: 5px;
-      padding: 5px;
-      font-size: 14px;
-    }
-    input:focus {
-      outline: 2px solid #456cb45e;
-      box-shadow: 1px 1px 10px 2px #3a58aa;
+  }
+  select {
+    border: 1px solid rgba(0, 0, 0, 0.274);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  select:focus {
+    outline: 2px solid #456cb45e;
+    box-shadow: 1px 1px 10px 2px #3a58aa;
+  }
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.274);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  input:focus {
+    outline: 2px solid #456cb45e;
+    box-shadow: 1px 1px 10px 2px #3a58aa;
+  }
+
+  .seeker-save {
+    display: inline-block;
+    margin-top: 3rem;
+    margin-left: 15rem;
+    padding: 1rem 2rem;
+    background-color: #0071ba;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    border: none;
+    &:hover {
+      opacity: 0.9;
     }
   }
 }
