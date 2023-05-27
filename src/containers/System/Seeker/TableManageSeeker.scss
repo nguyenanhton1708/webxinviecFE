@@ -1,0 +1,22 @@
+.seeker-table-container {
+  width: 100%;
+  height: auto;
+  margin-bottom: 3rem;
+  .seeker-table-manage {
+    width: 90%;
+    margin: 3rem auto;
+  }
+  table {
+    width: 100%;
+    text-align: center;
+    th {
+      padding: 1rem;
+      border: 1px solid black;
+      background-color: #58e187;
+    }
+    td {
+      border: 1px solid black;
+      padding: 1rem;
+    }
+  }
+}

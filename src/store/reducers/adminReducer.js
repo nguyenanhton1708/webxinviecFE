@@ -3,6 +3,7 @@ import actionTypes from "../actions/actionTypes";
 const initialState = {
   genders: [],
   citys: [],
+  users: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -16,7 +17,7 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    case actionTypes.FETCH_GENDER_FAIDED:
+    case actionTypes.FETCH_GENDER_FAILED:
       state.genders = [];
       return {
         ...state,
@@ -31,9 +32,20 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    case actionTypes.FETCH_CITY_FAIDED:
+    case actionTypes.FETCH_CITY_FAILED:
       state.citys = [];
+      return {
+        ...state,
+      };
 
+    case actionTypes.FETCH_ALL_USERS_SUCCESS:
+      state.users = action.users;
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALL_USERS_FAILED:
+      state.users = [];
       return {
         ...state,
       };

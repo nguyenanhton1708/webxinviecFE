@@ -6,6 +6,8 @@ import { getAllCodeService } from "../../../services/userService";
 import * as actions from "../../../store/actions";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+import TableManageSeeker from "./TableManageSeeker";
+import { CRUD_ACTIONS } from "../../../utils";
 class SeekerManage extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ class SeekerManage extends Component {
       genderArr: [],
       previewImgURL: "",
       isOpen: false,
+      isUserCreated: false,
 
       email: "",
       password: "",
@@ -22,27 +25,36 @@ class SeekerManage extends Component {
       phoneNumber: "",
       address: "",
       image: "",
+
+      action: "",
+      userEditId: "",
     };
   }
 
   async componentDidMount() {
     this.props.getGenderStart();
-    // try {
-    //   let res = await getAllCodeService("gender");
-    //   if (res && res.errCode === 0) {
-    //     this.setState({
-    //       genderArr: res.data,
-    //     });
-    //   }
-    //   console.log("check res: ", res);
-    // } catch (e) {
-    //   console.log(e);
-    // }
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.genderRedux !== this.props.genderRedux) {
+      let arrGenders = this.props.genderRedux;
       this.setState({
-        genderArr: this.props.genderRedux,
+        genderArr: arrGenders,
+        gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].key : "",
+      });
+    }
+
+    if (prevProps.users !== this.props.users) {
+      let arrGenders = this.props.genderRedux;
+      this.setState({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].key : "",
+        phoneNumber: "",
+        address: "",
+        image: "",
+        action: CRUD_ACTIONS.CREATE,
       });
     }
   }
@@ -66,7 +78,64 @@ class SeekerManage extends Component {
     });
   };
 
-  handleSaveSeeker = () => {};
+  handleSaveSeeker = () => {
+    let isValid = this.checkValidateInput();
+    if (isValid === false) return;
+    let action = this.state.action;
+    this.setState({
+      ...this.state,
+      isUserCreated: false,
+    });
+    if (action === CRUD_ACTIONS.CREATE) {
+      //fire redux create user
+      this.props.createNewSeeker({
+        email: this.state.email,
+        password: this.state.password,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        address: this.state.address,
+        phoneNumber: this.state.phoneNumber,
+        gender: this.state.gender,
+        roleId: this.state.roleId,
+        position: this.state.position,
+      });
+    }
+    if (action === CRUD_ACTIONS.EDIT) {
+      //fire redux edit user
+      this.props.editSeekerRedux({
+        id: this.state.userEditId,
+        email: this.state.email,
+        password: this.state.password,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        address: this.state.address,
+        phoneNumber: this.state.phoneNumber,
+        gender: this.state.gender,
+        roleId: this.state.roleId,
+        position: this.state.position,
+      });
+    }
+  };
+
+  checkValidateInput = () => {
+    let isValid = true;
+    let arrCheck = [
+      "email",
+      "password",
+      "firstName",
+      "lastName",
+      "phoneNumber",
+      "address",
+    ];
+    for (let i = 0; i < arrCheck.length; i++) {
+      if (!this.state[arrCheck[i]]) {
+        isValid = false;
+        alert("Chưa nhập: " + arrCheck[i]);
+        break;
+      }
+    }
+    return isValid;
+  };
 
   onChangeInput = (event, id) => {
     let copyState = { ...this.state };
@@ -75,18 +144,23 @@ class SeekerManage extends Component {
       {
         ...copyState,
       },
-      () => {
-        console.log("check input onchange: ", this.state);
-      }
+      () => {}
     );
-    // email: "",
-    // password: "",
-    // firstName: "",
-    // lastName: "",
-    // gender: "",
-    // phoneNumber: "",
-    // address: "",
-    // image: "",
+  };
+
+  handleEditUserFromParent = (user) => {
+    this.setState({
+      email: user.email,
+      password: "******",
+      firstName: user.firstName,
+      lastName: user.lastName,
+      gender: user.gender,
+      phoneNumber: user.phoneNumber,
+      address: user.address,
+      image: "",
+      action: CRUD_ACTIONS.EDIT,
+      userEditId: user.id,
+    });
   };
 
   render() {
@@ -101,13 +175,17 @@ class SeekerManage extends Component {
       address,
       image,
     } = this.state;
-
     return (
       <div className="seeker-manage-create-container">
         <h1>Quản lý ứng viên</h1>
         <div className="seeker-manage-create-content">
           <div className="seeker-manage-create">
-            <h2>Thêm mới ứng viên</h2>
+            <h2>
+              {" "}
+              {this.state.action === CRUD_ACTIONS.EDIT
+                ? "Thay đổi thông tin ứng viên"
+                : "Thêm mới ứng viên"}
+            </h2>
           </div>
           <div className="seeker-manage-create-form">
             <div className="seeker-email">
@@ -118,6 +196,9 @@ class SeekerManage extends Component {
                 onChange={(event) => {
                   this.onChangeInput(event, "email");
                 }}
+                disabled={
+                  this.state.action === CRUD_ACTIONS.EDIT ? true : false
+                }
               ></input>
             </div>
             <div className="seeker-password">
@@ -128,6 +209,9 @@ class SeekerManage extends Component {
                 onChange={(event) => {
                   this.onChangeInput(event, "password");
                 }}
+                disabled={
+                  this.state.action === CRUD_ACTIONS.EDIT ? true : false
+                }
               ></input>
             </div>
             <div className="seeker-firstname">
@@ -152,11 +236,20 @@ class SeekerManage extends Component {
             </div>
             <div className="seeker-gender">
               <span>Giới tính</span>
-              <select>
+              <select
+                onChange={(event) => {
+                  this.onChangeInput(event, "gender");
+                }}
+                value={gender}
+              >
                 {genders &&
                   genders.length > 0 &&
                   genders.map((item, index) => {
-                    return <option key={index}>{item.valueVi}</option>;
+                    return (
+                      <option key={index} value={item.key}>
+                        {item.valueVi}
+                      </option>
+                    );
                   })}
               </select>
             </div>
@@ -202,13 +295,20 @@ class SeekerManage extends Component {
             </div>
           </div>
           <button
-            className="seeker-save"
+            className={
+              this.state.action === CRUD_ACTIONS.EDIT
+                ? "seeker-edit"
+                : "seeker-save"
+            }
             onClick={() => this.handleSaveSeeker()}
           >
-            Lưu
+            {this.state.action === CRUD_ACTIONS.EDIT ? "Lưu thay đổi" : "Lưu"}
           </button>
         </div>
-
+        <TableManageSeeker
+          handleEditUserFromParent={this.handleEditUserFromParent}
+          action={this.state.action}
+        />
         {this.state.isOpen === true && (
           <Lightbox
             mainSrc={this.state.previewImgURL}
@@ -223,12 +323,16 @@ class SeekerManage extends Component {
 const mapStateToProps = (state) => {
   return {
     genderRedux: state.admin.genders,
+    users: state.admin.users,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getGenderStart: () => dispatch(actions.fetchGenderStart()),
+    createNewSeeker: (data) => dispatch(actions.createNewSeeker(data)),
+    fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
+    editSeekerRedux: (data) => dispatch(actions.editSeeker(data)),
   };
 };
 

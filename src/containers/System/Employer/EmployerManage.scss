@@ -6,13 +6,16 @@ html {
     text-align: center;
     margin-top: 3rem;
     color: #2451cc;
+    font-weight: bold;
   }
   h2 {
+    padding: 1rem;
     margin-top: 3rem;
     margin-left: 10rem;
     font-size: 2rem;
   }
   .employer-manage-create-content {
+    background-color: #f3f3f3;
     width: 80%;
     margin: 0 auto;
   }
@@ -71,6 +74,38 @@ html {
       margin-top: 2rem;
       width: calc((100% / 3) - 1rem);
     }
+    .employer-logo-container {
+      display: flex;
+      margin-left: 1rem;
+      width: calc(20% - 1rem);
+      margin-top: 2rem;
+      .employer-logo {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+      }
+      .label-upload {
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.466);
+        padding: 5px;
+        i {
+          margin-left: 1rem;
+        }
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+      .preview-logo {
+        border: 1px solid green;
+        height: 10rem;
+        width: 60%;
+        background-size: contain;
+        object-fit: cover;
+        margin-left: 2rem;
+        cursor: pointer;
+        border: 1px solid gray;
+      }
+    }
     .employer-logo {
       display: flex;
       flex-direction: column;
@@ -87,6 +122,20 @@ html {
     input:focus {
       outline: 2px solid #456cb45e;
       box-shadow: 1px 1px 10px 2px #3a58aa;
+    }
+  }
+  .employer-save {
+    display: inline-block;
+    margin-top: 3rem;
+    margin-left: 15rem;
+    padding: 1rem 2rem;
+    background-color: #0071ba;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    border: none;
+    &:hover {
+      opacity: 0.9;
     }
   }
 }
