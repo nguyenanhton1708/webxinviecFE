@@ -11,10 +11,8 @@ import {
 import { path } from "../utils";
 import Home from "../routes/Home";
 import Login from "./Auth/Login";
-import Header from "./Header/Header";
 import System from "../routes/System";
-import { CustomToastCloseButton } from "../components/CustomToast";
-import HomePage from "./HomePage/HomePage";
+import HomePage from "./HomePage/HomePage.js";
 import CustomScrollbars from "../components/CustomScrollbars";
 class App extends Component {
   handlePersistorState = () => {

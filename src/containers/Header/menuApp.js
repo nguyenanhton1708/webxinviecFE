@@ -1,18 +1,19 @@
 export const adminMenu = [
   {
     //hệ thống
-    name: "Quản lý người dùng",
+    name: "menu.system.header",
+    link: "/system/admin-manage",
     menus: [
       {
-        name: "Quản lý Admin",
+        name: "menu.system.admin",
         link: "/system/admin-manage",
       },
       {
-        name: "Quản lý nhà tuyển dụng",
+        name: "menu.system.employer",
         link: "/system/employer-manage",
       },
       {
-        name: "Quản lý ứng viên",
+        name: "menu.system.seeker",
         link: "/system/seeker-manage",
       },
       // subMenus: [
@@ -28,6 +29,6 @@ export const adminMenu = [
     ],
   },
   {
-    name: "Quản lý Blog",
+    name: "menu.system.blog",
   },
 ];

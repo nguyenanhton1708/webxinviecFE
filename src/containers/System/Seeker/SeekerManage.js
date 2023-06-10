@@ -7,7 +7,8 @@ import * as actions from "../../../store/actions";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import TableManageSeeker from "./TableManageSeeker";
-import { CRUD_ACTIONS } from "../../../utils";
+import { CRUD_ACTIONS, CommonUtils } from "../../../utils";
+
 class SeekerManage extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +40,7 @@ class SeekerManage extends Component {
       let arrGenders = this.props.genderRedux;
       this.setState({
         genderArr: arrGenders,
-        gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].key : "",
+        gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : "",
       });
     }
 
@@ -50,23 +51,25 @@ class SeekerManage extends Component {
         password: "",
         firstName: "",
         lastName: "",
-        gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].key : "",
+        gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : "",
         phoneNumber: "",
         address: "",
         image: "",
         action: CRUD_ACTIONS.CREATE,
+        previewImgURL: "",
       });
     }
   }
 
-  handleOnChangeImage = (event) => {
+  handleOnChangeImage = async (event) => {
     let data = event.target.files;
     let file = data[0];
     if (file) {
+      let base64 = await CommonUtils.getBase64(file);
       let objectUrl = URL.createObjectURL(file);
       this.setState({
         previewImgURL: objectUrl,
-        image: file,
+        image: base64,
       });
     }
   };
@@ -78,7 +81,7 @@ class SeekerManage extends Component {
     });
   };
 
-  handleSaveSeeker = () => {
+  handleSaveUsers = () => {
     let isValid = this.checkValidateInput();
     if (isValid === false) return;
     let action = this.state.action;
@@ -88,7 +91,7 @@ class SeekerManage extends Component {
     });
     if (action === CRUD_ACTIONS.CREATE) {
       //fire redux create user
-      this.props.createNewSeeker({
+      this.props.createNewUsers({
         email: this.state.email,
         password: this.state.password,
         firstName: this.state.firstName,
@@ -97,12 +100,13 @@ class SeekerManage extends Component {
         phoneNumber: this.state.phoneNumber,
         gender: this.state.gender,
         roleId: this.state.roleId,
-        position: this.state.position,
+        positionId: this.state.position,
+        image: this.state.image,
       });
     }
     if (action === CRUD_ACTIONS.EDIT) {
       //fire redux edit user
-      this.props.editSeekerRedux({
+      this.props.editUsersRedux({
         id: this.state.userEditId,
         email: this.state.email,
         password: this.state.password,
@@ -112,7 +116,8 @@ class SeekerManage extends Component {
         phoneNumber: this.state.phoneNumber,
         gender: this.state.gender,
         roleId: this.state.roleId,
-        position: this.state.position,
+        positionId: this.state.position,
+        image: this.state.image,
       });
     }
   };
@@ -149,6 +154,10 @@ class SeekerManage extends Component {
   };
 
   handleEditUserFromParent = (user) => {
+    let imageBase64 = "";
+    if (user.image) {
+      imageBase64 = new Buffer(user.image, "base64").toString("binary");
+    }
     this.setState({
       email: user.email,
       password: "******",
@@ -158,6 +167,7 @@ class SeekerManage extends Component {
       phoneNumber: user.phoneNumber,
       address: user.address,
       image: "",
+      previewImgURL: imageBase64,
       action: CRUD_ACTIONS.EDIT,
       userEditId: user.id,
     });
@@ -179,7 +189,7 @@ class SeekerManage extends Component {
       <div className="seeker-manage-create-container">
         <h1>Quản lý ứng viên</h1>
         <div className="seeker-manage-create-content">
-          <div className="seeker-manage-create">
+          <div className="seekerManage-manage-create">
             <h2>
               {" "}
               {this.state.action === CRUD_ACTIONS.EDIT
@@ -246,7 +256,7 @@ class SeekerManage extends Component {
                   genders.length > 0 &&
                   genders.map((item, index) => {
                     return (
-                      <option key={index} value={item.key}>
+                      <option key={index} value={item.keyMap}>
                         {item.valueVi}
                       </option>
                     );
@@ -297,10 +307,10 @@ class SeekerManage extends Component {
           <button
             className={
               this.state.action === CRUD_ACTIONS.EDIT
-                ? "seeker-edit"
-                : "seeker-save"
+                ? "Users-edit"
+                : "Users-save"
             }
-            onClick={() => this.handleSaveSeeker()}
+            onClick={() => this.handleSaveUsers()}
           >
             {this.state.action === CRUD_ACTIONS.EDIT ? "Lưu thay đổi" : "Lưu"}
           </button>
@@ -330,9 +340,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getGenderStart: () => dispatch(actions.fetchGenderStart()),
-    createNewSeeker: (data) => dispatch(actions.createNewSeeker(data)),
+    createNewUsers: (data) => dispatch(actions.createNewUsers(data)),
     fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
-    editSeekerRedux: (data) => dispatch(actions.editSeeker(data)),
+    editUsersRedux: (data) => dispatch(actions.editUsers(data)),
   };
 };
 

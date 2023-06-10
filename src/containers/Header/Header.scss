@@ -23,4 +23,16 @@
   span {
     margin-right: 1rem;
   }
+  .language-vi {
+    cursor: pointer;
+    &:active {
+      color: #58e187;
+    }
+  }
+  .language-en {
+    cursor: pointer;
+    &:active {
+      color: #ffa500;
+    }
+  }
 }

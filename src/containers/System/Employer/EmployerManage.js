@@ -106,7 +106,7 @@ class EmployerManage extends Component {
           </div>
           <button
             className="employer-save"
-            // onClick={() => this.handleSaveSeeker()}
+            // onClick={() => this.handleSaveUsers()}
           >
             Lưu
           </button>

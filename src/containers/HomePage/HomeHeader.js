@@ -103,9 +103,6 @@ class HomeHeader extends Component {
             </h1>
             <div className="search">
               <div className="search-dropdown">
-                {/* <span>
-                  <FormattedMessage id="homeheader.city" />
-                </span> */}
                 <select>
                   {citys &&
                     citys.length > 0 &&

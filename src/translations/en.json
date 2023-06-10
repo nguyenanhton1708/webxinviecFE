@@ -9,6 +9,35 @@
     "content": "1,041 IT Jobs For 'Chất' Developers",
     "city": "All cities",
     "search": "Search",
-    "TopEmployers": "Top Employers"
+    "TopEmployers": "Top Employers",
+    "welcome": "Welcome"
+  },
+  "menu": {
+    "system": {
+      "header": "User Manage",
+      "admin": "Admin Manage",
+      "employer": "Employer Manage",
+      "seeker": "Seeker Manage",
+      "blog": "Blog Manage"
+    }
+  },
+  "manage-user": {
+    "header": "User manage",
+    "create": "Create new user",
+    "edit": "Change information user",
+    "email": "Email",
+    "password": "Password",
+    "firstname": "First name",
+    "lastname": "Last name",
+    "phone": "Phone",
+    "address": "Address",
+    "gender": "Gender",
+    "position": "Position",
+    "role": "Role",
+    "image": "Avatar",
+    "upload": "Upload",
+    "save-btn": "Save user",
+    "edit-btn": "Save change",
+    "companyname": "Company Name"
   }
 }

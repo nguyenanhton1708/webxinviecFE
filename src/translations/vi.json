@@ -9,6 +9,35 @@
     "content": "1,041 Việc Làm IT Cho Developer 'Chất'",
     "city": "Tất cả thành phố",
     "search": "Tìm kiếm",
-    "TopEmployers": "Nhà tuyển dụng nổi bật"
+    "TopEmployers": "Nhà tuyển dụng nổi bật",
+    "welcome": "Xin chào"
+  },
+  "menu": {
+    "system": {
+      "header": "Quản lý người dùng",
+      "admin": "Quản lý admin",
+      "employer": "Quản lý nhà tuyển dụng",
+      "seeker": "Quản lý ứng viên",
+      "blog": "Quản lý blog"
+    }
+  },
+  "manage-user": {
+    "header": "Quản lý người dùng",
+    "create": "Thêm mới người dùng",
+    "edit": "Thay đổi thông tin người dùng",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "firstname": "Họ",
+    "lastname": "Tên",
+    "phone": "Số điện thoại",
+    "address": "Địa chỉ",
+    "gender": "Giới tính",
+    "position": "Chức danh",
+    "role": "Vai trò",
+    "image": "Ảnh đại diện",
+    "upload": "Tải ảnh",
+    "save-btn": "Lưu người dùng",
+    "edit-btn": "Lưu thay đổi",
+    "companyname": "Tên công ty"
   }
 }

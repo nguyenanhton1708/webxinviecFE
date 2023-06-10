@@ -1,37 +1,7 @@
-html {
-  font-size: 62.5%;
-}
-#customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#customers td,
-#customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#customers tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#customers tr:hover {
-  background-color: #ddd;
-}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04aa6d;
-  color: white;
-}
-.users-container {
+.Users-container {
   margin: 0 10rem !important;
 }
-.users-title {
+.Users-title {
   margin: 1rem 0 1rem 3rem;
   font-size: 20px;
   color: rgb(252, 92, 0);
@@ -59,16 +29,177 @@ html {
     color: red !important;
   }
 }
-.create-new-user {
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  background-color: rgba(0, 38, 252, 0.829);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
-  border: none;
-  i {
-    padding-right: 5px;
+
+html {
+  font-size: 62.5%;
+}
+.Users-manage-create-container {
+  h1 {
+    text-align: center;
+    margin-top: 3rem;
+    color: #2451cc;
+    font-weight: bold;
+  }
+  h2 {
+    margin-top: 3rem;
+    margin-left: 10rem;
+    padding-top: 3rem;
+    font-size: 2rem;
+  }
+  .Users-manage-create-content {
+    width: 80%;
+    background-color: #f3f3f3;
+    margin: 0 auto;
+  }
+  .Users-manage-create-form {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    .Users-email {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+    }
+    .Users-password {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .Users-firstname {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .Users-lastname {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% / 4) - 1rem);
+      margin-left: 1rem;
+    }
+    .Users-gender {
+      display: flex;
+      flex-direction: column;
+      width: calc(20% - 1rem);
+      margin-top: 2rem;
+      margin-left: 1rem;
+    }
+    .Users-position {
+      display: flex;
+      flex-direction: column;
+      width: calc(20% - 1rem);
+      margin-top: 2rem;
+      margin-left: 1rem;
+    }
+    .Users-role {
+      display: flex;
+      flex-direction: column;
+      width: calc(20% - 1rem);
+      margin-top: 2rem;
+      margin-left: 1rem;
+    }
+    .Users-phonenumber {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      width: calc(20% - 1rem);
+    }
+    .Users-address {
+      display: flex;
+      flex-direction: column;
+      width: calc(80% - 1rem);
+      margin-left: 1rem;
+      margin-top: 2rem;
+    }
+    .Users-companyName {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      width: calc(20% - 1rem);
+    }
+    .Users-image-container {
+      display: flex;
+      margin-left: 1rem;
+      width: calc(20% - 1rem);
+      margin-top: 2rem;
+      .Users-image {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+      }
+      .label-upload {
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.466);
+        padding: 5px;
+        i {
+          margin-left: 1rem;
+        }
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+
+      .preview-image {
+        height: 10rem;
+        width: 60%;
+        background: center center no-repeat;
+        background-size: contain;
+        object-fit: cover;
+        margin-left: 2rem;
+        cursor: pointer;
+        border: 1px solid gray;
+      }
+    }
+  }
+  select {
+    border: 1px solid rgba(0, 0, 0, 0.274);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  select:focus {
+    outline: 2px solid #456cb45e;
+    box-shadow: 1px 1px 10px 2px #3a58aa;
+  }
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.274);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  input:focus {
+    outline: 2px solid #456cb45e;
+    box-shadow: 1px 1px 10px 2px #3a58aa;
+  }
+
+  .Users-save {
+    display: inline-block;
+    margin-top: 3rem;
+    margin-left: 15rem;
+    padding: 1rem 2rem;
+    background-color: #0071ba;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    border: none;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  .Users-edit {
+    display: inline-block;
+    margin-top: 3rem;
+    margin-left: 15rem;
+    padding: 1rem 2rem;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    border: none;
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }

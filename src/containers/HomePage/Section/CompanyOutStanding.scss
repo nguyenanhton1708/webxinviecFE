@@ -30,22 +30,30 @@ html {
         border: 1px solid #f8f5f5;
         cursor: pointer;
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
-        background-color: white;
-        img {
-          position: absolute;
-          top: 30%;
-          left: 50%;
-          transform: translate(-50%, -30%);
+
+        .CompanyOutStanding-image {
+          background: center center no-repeat;
+          background-size: contain;
+          margin: 4rem auto 2rem;
+          width: 220px;
+          height: 150px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            border: none;
+            outline: none;
+            background: center center no-repeat;
+            background-size: contain;
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+          }
         }
         .CompanyOutStanding-name {
-          display: block;
-          position: absolute;
-          top: 60%;
-          left: 50%;
-          transform: translateX(-50%);
           text-align: center;
           font-size: 17px;
-          width: 25rem;
+          font-weight: bold;
         }
         &:hover {
           border: 2px solid gray;
