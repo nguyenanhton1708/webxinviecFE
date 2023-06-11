@@ -8,6 +8,7 @@ const initialState = {
   citys: [],
   users: [],
   topCompanys: [],
+  allCompanys: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -88,6 +89,19 @@ const adminReducer = (state = initialState, action) => {
 
     case actionTypes.FETCH_TOP_COMPANY_FAILED:
       state.topCompanys = [];
+
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALL_COMPANYS_SUCCESS:
+      state.allCompanys = action.dataAllCompanys;
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALL_COMPANYS_FAILED:
+      state.allCompanys = [];
 
       return {
         ...state,

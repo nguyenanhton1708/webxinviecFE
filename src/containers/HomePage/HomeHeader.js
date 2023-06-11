@@ -96,44 +96,46 @@ class HomeHeader extends Component {
             </div>
           </div>
         </div>
-        <div className="home-search-container">
-          <div className="search-container">
-            <h1>
-              <FormattedMessage id="homeheader.content" />
-            </h1>
-            <div className="search">
-              <div className="search-dropdown">
-                <select>
-                  {citys &&
-                    citys.length > 0 &&
-                    citys.map((item, index) => {
-                      return <option key={index}>{item.valueVi}</option>;
-                    })}
-                </select>
+        {this.props.isShowBanner === true && (
+          <div className="home-search-container">
+            <div className="search-container">
+              <h1>
+                <FormattedMessage id="homeheader.content" />
+              </h1>
+              <div className="search">
+                <div className="search-dropdown">
+                  <select>
+                    {citys &&
+                      citys.length > 0 &&
+                      citys.map((item, index) => {
+                        return <option key={index}>{item.valueVi}</option>;
+                      })}
+                  </select>
+                </div>
+                <div className="search-text">
+                  <i className="fas fa-search"></i>
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm theo kỹ năng, chức vụ, công ty..."
+                  />
+                </div>
+                <button className="search-click">
+                  <FormattedMessage id="homeheader.search" />
+                </button>
               </div>
-              <div className="search-text">
-                <i className="fas fa-search"></i>
-                <input
-                  type="text"
-                  placeholder="Tìm kiếm theo kỹ năng, chức vụ, công ty..."
-                />
+              <div className="search-taglist">
+                <a>Java</a>
+                <a>ReactJs</a>
+                <a>.NET</a>
+                <a>Tester</a>
+                <a>PHP</a>
+                <a>Business Analyst</a>
+                <a>NodeJS</a>
+                <a>Manager</a>
               </div>
-              <button className="search-click">
-                <FormattedMessage id="homeheader.search" />
-              </button>
-            </div>
-            <div className="search-taglist">
-              <a>Java</a>
-              <a>ReactJs</a>
-              <a>.NET</a>
-              <a>Tester</a>
-              <a>PHP</a>
-              <a>Business Analyst</a>
-              <a>NodeJS</a>
-              <a>Manager</a>
             </div>
           </div>
-        </div>
+        )}
       </React.Fragment>
     );
   }

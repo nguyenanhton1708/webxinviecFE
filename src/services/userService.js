@@ -25,6 +25,17 @@ const getAllCodeService = (inputType) => {
 const getTopCompanyService = (limit) => {
   return axios.get(`/api/top-company-home?limit=${limit}`);
 };
+
+const getAllCompanys = () => {
+  return axios.get(`/api/get-all-companys`);
+};
+const saveDetailCompanyService = (data) => {
+  return axios.post(`/api/save-infor-companys`, data);
+};
+
+const getDetailInforCompany = (inputId) => {
+  return axios.get(`/api/get-detail-company?id=${inputId}`);
+};
 export {
   handleLoginApi,
   getAllUsers,
@@ -33,4 +44,7 @@ export {
   editUserService,
   getAllCodeService,
   getTopCompanyService,
+  getAllCompanys,
+  saveDetailCompanyService,
+  getDetailInforCompany,
 };

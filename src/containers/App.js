@@ -14,6 +14,7 @@ import Login from "./Auth/Login";
 import System from "../routes/System";
 import HomePage from "./HomePage/HomePage.js";
 import CustomScrollbars from "../components/CustomScrollbars";
+import DetailCompany from "./Seeker/Company/DetailCompany";
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -51,6 +52,7 @@ class App extends Component {
                     component={userIsAuthenticated(System)}
                   />
                   <Route path={path.HOMEPAGE} component={HomePage} />
+                  <Route path={path.DETAIL_COMPANY} component={DetailCompany} />
                 </Switch>
               </CustomScrollbars>
             </span>

@@ -157,14 +157,7 @@ class UserManage extends Component {
 
   checkValidateInput = () => {
     let isValid = true;
-    let arrCheck = [
-      "email",
-      "password",
-      "firstName",
-      "lastName",
-      "phoneNumber",
-      "address",
-    ];
+    let arrCheck = ["email", "password", "firstName", "lastName", "address"];
     for (let i = 0; i < arrCheck.length; i++) {
       if (!this.state[arrCheck[i]]) {
         isValid = false;

@@ -6,6 +6,8 @@ import {
   deleteUserService,
   editUserService,
   getTopCompanyService,
+  getAllCompanys,
+  saveDetailCompanyService,
 } from "../../services/userService";
 import { toast } from "react-toastify";
 export const fetchGenderStart = () => {
@@ -237,5 +239,50 @@ export const fetchTopCompany = () => {
   };
 };
 
-// let res1 = await getTopCompanyService("");
-//       console.log("check res get top company:", res1);
+export const fetchAllCompanys = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllCompanys();
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_COMPANYS_SUCCESS,
+          dataAllCompanys: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_ALL_COMPANYS_FAILED,
+        });
+      }
+    } catch (e) {
+      console.log("FETCH_ALL_COMPANYS_FAILED: ", e);
+      dispatch({
+        type: actionTypes.FETCH_ALL_COMPANYS_FAILED,
+      });
+    }
+  };
+};
+
+export const saveDetailCompany = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await saveDetailCompanyService(data);
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.SAVE_DETAIL_CONPANY_SUCCESS,
+        });
+        toast.success("Cập nhập thành công");
+      } else {
+        toast.error("Cập nhập thất bại");
+        dispatch({
+          type: actionTypes.SAVE_DETAIL_CONPANY_FAILED,
+        });
+      }
+    } catch (e) {
+      toast.error("Cập nhập thất bại");
+      console.log("SAVE_DETAIL_CONPANY_FAILED: ", e);
+      dispatch({
+        type: actionTypes.SAVE_DETAIL_CONPANY_FAILED,
+      });
+    }
+  };
+};

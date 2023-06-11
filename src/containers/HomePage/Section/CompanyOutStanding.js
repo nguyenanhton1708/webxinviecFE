@@ -5,7 +5,8 @@ import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
 import * as actions from "../../../store/actions";
 import { LANGUAGES } from "../../../utils";
-import companyImg from "../../../../src/assets/companyLogo/logo MB.png";
+import { withRouter } from "react-router";
+
 class CompanyOutStanding extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,12 @@ class CompanyOutStanding extends Component {
   componentDidMount() {
     this.props.loadTopCompanys();
   }
+
+  handleViewDetailCompany = (company) => {
+    console.log("check view infor:", company);
+
+    this.props.history.push(`/detail-company/${company.id}`);
+  };
   render() {
     console.log(" check top companyredux:", this.props.topCompanysRedux);
     let { language } = this.props;
@@ -46,11 +53,12 @@ class CompanyOutStanding extends Component {
                     imageBase64 = new Buffer(item.image, "base64").toString(
                       "binary"
                     );
-                    let name = `${item.conpanyName}`;
-                    // let nameVi = `${item.positionData.valueVi},${item.firstName} ${item.lastName}`;
-                    // let nameEn = `${item.positionData.valueEn},${item.firstName} ${item.lastName}`;
                     return (
-                      <div className="CompanyOutStanding-product" key={index}>
+                      <div
+                        className="CompanyOutStanding-product"
+                        key={index}
+                        onClick={() => this.handleViewDetailCompany(item)}
+                      >
                         <div
                           className="CompanyOutStanding-image"
                           style={{
@@ -87,4 +95,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompanyOutStanding);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CompanyOutStanding)
+);

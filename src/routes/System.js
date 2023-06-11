@@ -16,6 +16,10 @@ class System extends Component {
           <div className="system-list">
             <Switch>
               <Route path="/system/admin-manage" component={UserManage} />
+              <Route
+                path="/system/employer-manage"
+                component={EmployerManage}
+              />
               <Route path="/system/seeker-manage" component={SeekerManage} />
               <Route
                 path="/system/employer-manage"

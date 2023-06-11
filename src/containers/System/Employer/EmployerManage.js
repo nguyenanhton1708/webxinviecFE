@@ -1,133 +1,171 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
+import * as actions from "../../../store/actions";
+import { dispatch } from "../../../redux";
+import MarkdownIt from "markdown-it";
+import MdEditor from "react-markdown-editor-lite";
 import "./EmployerManage.scss";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+import "react-markdown-editor-lite/lib/index.css";
+import { getDetailInforCompany } from "../../../services/userService";
+import Select from "react-select";
+import { CRUD_ACTIONS, LANGUAGES } from "../../../utils";
+
+const mdParser = new MarkdownIt(/* Markdown-it options */);
+
 class EmployerManage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // genderArr: [],
-      // previewImgURL: "",
-      // isOpen: false,
-      // email: "",
-      // password: "",
-      // firstName: "",
-      // lastName: "",
-      // gender: "",
-      // phoneNumber: "",
-      // address: "",
-      // image: "",
+      contentMarkdown: "",
+      contentHTML: "",
+      selectedCompany: "",
+      description: "",
+      listCompanys: [],
+      // hasOldData: false,
     };
   }
 
-  componentDidMount() {}
-
-  handleOnChangeImage = (event) => {
-    let data = event.target.files;
-    let file = data[0];
-    if (file) {
-      let objectUrl = URL.createObjectURL(file);
+  componentDidMount() {
+    this.props.fetchAllCompanys();
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.allCompanys !== this.props.allCompanys) {
+      let dataSelect = this.buildDataInputSelect(this.props.allCompanys);
       this.setState({
-        previewImgURL: objectUrl,
-        image: file,
+        listCompanys: dataSelect,
       });
     }
+  }
+
+  buildDataInputSelect = (inputData) => {
+    let result = [];
+    if (inputData && inputData.length > 0) {
+      inputData.map((item, index) => {
+        let object = {};
+        object.label = `${item.companyName} `;
+        object.value = item.id;
+        result.push(object);
+      });
+    }
+    return result;
   };
 
-  openPreviewImage = () => {
-    if (!this.state.previewImgURL) return;
+  handleEditorChange = ({ html, text }) => {
     this.setState({
-      isOpen: true,
+      contentMarkdown: text,
+      contentHTML: html,
+    });
+  };
+
+  handleSaveContentMarkdown = () => {
+    let { hasOldData } = this.state;
+    this.props.saveDetailCompany({
+      contentHTML: this.state.contentHTML,
+      contentMarkdown: this.state.contentMarkdown,
+      description: this.state.description,
+      companyId: this.state.selectedCompany.value,
+      action: hasOldData === true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE,
+    });
+    // console.log("check old data", hasOldData);
+  };
+
+  handleChangeSelect = async (selectedCompany) => {
+    this.setState({ selectedCompany });
+    let res = await getDetailInforCompany(selectedCompany.value);
+    if (res && res.errCode === 0 && res.data && res.data.Markdown) {
+      let markdown = res.data.Markdown;
+      this.setState({
+        contentHTML: markdown.contentHTML,
+        contentMarkdown: markdown.contentMarkdown,
+        description: markdown.description,
+        hasOldData: true,
+      });
+      // } else {
+      //   this.setState({
+      //     contentHTML: "",
+      //     contentMarkdown: "",
+      //     description: "",
+      //     // hasOldData: true,
+      //   });
+    }
+    console.log("check on change", selectedCompany);
+  };
+  handleOnchangeDesc = (event) => {
+    this.setState({
+      description: event.target.value,
     });
   };
   render() {
+    let { hasOldData } = this.state;
+    console.log("check all data", this.state);
+
     return (
-      <div className="employer-manage-create-container">
-        <h1>Quản lý nhà tuyển dụng</h1>
-        <div className="employer-manage-create-content">
-          <div className="employer-manage-create">
-            <h2>Thêm mới nhà tuyển dụng</h2>
-          </div>
-          <div className="employer-manage-create-form">
-            <div className="employer-email">
-              <span>Email</span>
-              <input type="text"></input>
-            </div>
-            <div className="employer-password">
-              <span>Mật khẩu</span>
-              <input type="text"></input>
-            </div>
-            <div className="employer-firstname">
-              <span>Họ</span>
-              <input type="text"></input>
-            </div>
-            <div className="employer-lastname">
-              <span>Tên</span>
-              <input type="text"></input>
-            </div>
-            <div className="employer-companyname">
-              <span>Tên công ty</span>
-              <input type="text"></input>
-            </div>
-            <div className="employer-address">
-              <span>Địa chỉ</span>
-              <input type="text"></input>
-            </div>
-            <div className="employer-phonenumber">
-              <span>Số điện thoại</span>
-              <input type="text"></input>
-            </div>
-            <div className="employer-position">
-              <span>Chức vụ</span>
-              <input type="text"></input>
-            </div>
-            <div className="employer-logo-container">
-              <div className="employer-logo">
-                <span>Ảnh đại diện</span>
-                <input
-                  id="previewImg"
-                  type="file"
-                  hidden
-                  onChange={(event) => this.handleOnChangeImage(event)}
-                />
-                <label className="label-upload" htmlFor="previewImg">
-                  Tải ảnh
-                  <i className="fas fa-upload"></i>
-                </label>
-              </div>
-              <div
-                className="preview-logo"
-                style={{ background: `url(${this.state.previewImgURL})` }}
-                onClick={() => this.openPreviewImage()}
-              ></div>
-            </div>
-          </div>
-          <button
-            className="employer-save"
-            // onClick={() => this.handleSaveUsers()}
-          >
-            Lưu
-          </button>
+      <div className="employer-manage-container">
+        <div className="employer-manage-title">
+          <h1>Quản lý nhà tuyển dụng</h1>
         </div>
-        {this.state.isOpen === true && (
-          <Lightbox
-            mainSrc={this.state.previewImgURL}
-            onCloseRequest={() => this.setState({ isOpen: false })}
-          />
-        )}
+        <div className="employer-manage-editor">
+          <div className="employer-manage-top">
+            <div className="employer-select">
+              <label>Chọn công ty</label>
+              <Select
+                value={this.state.selectedCompany}
+                onChange={this.handleChangeSelect}
+                options={this.state.listCompanys}
+                className="employer-select-action"
+              />
+            </div>
+            <div className="employer-desc">
+              <label>Giới thiệu công ty:</label>
+              <textarea
+                className="employer-desc-text"
+                onChange={(event) => this.handleOnchangeDesc(event)}
+                value={this.state.description}
+              ></textarea>
+            </div>
+          </div>
+          <div>
+            <label>Nhập chi tiết tuyển dụng</label>
+            <MdEditor
+              style={{ height: "500px" }}
+              renderHTML={(text) => mdParser.render(text)}
+              onChange={this.handleEditorChange}
+              value={this.state.contentMarkdown}
+            />
+          </div>
+        </div>
+        <button
+          onClick={() => this.handleSaveContentMarkdown()}
+          className={
+            hasOldData === true
+              ? "employer-manage-save"
+              : "employer-manage-edit"
+          }
+        >
+          {hasOldData === true ? (
+            <span>Lưu thông tin</span>
+          ) : (
+            <span>Tạo thông tin</span>
+          )}
+        </button>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    allCompanys: state.admin.allCompanys,
+    language: state.app.language,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    fetchAllCompanys: (id) => dispatch(actions.fetchAllCompanys()),
+    saveDetailCompany: (data) => dispatch(actions.saveDetailCompany(data)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployerManage);
