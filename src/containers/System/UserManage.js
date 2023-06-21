@@ -157,7 +157,7 @@ class UserManage extends Component {
 
   checkValidateInput = () => {
     let isValid = true;
-    let arrCheck = ["email", "password", "firstName", "lastName", "address"];
+    let arrCheck = ["email", "password", "address"];
     for (let i = 0; i < arrCheck.length; i++) {
       if (!this.state[arrCheck[i]]) {
         isValid = false;
@@ -361,29 +361,6 @@ class UserManage extends Component {
                   })}
               </select>
             </div>
-            <div className="Users-position">
-              <span>
-                <FormattedMessage id="manage-user.position" />
-              </span>
-              <select
-                onChange={(event) => {
-                  this.onChangeInput(event, "position");
-                }}
-                value={position}
-              >
-                {positions &&
-                  positions.length > 0 &&
-                  positions.map((item, index) => {
-                    return (
-                      <option key={index} value={item.keyMap}>
-                        {language === LANGUAGES.VI
-                          ? item.valueVi
-                          : item.valueEn}
-                      </option>
-                    );
-                  })}
-              </select>
-            </div>
             <div className="Users-role">
               <span>
                 <FormattedMessage id="manage-user.role" />
@@ -407,7 +384,6 @@ class UserManage extends Component {
                   })}
               </select>
             </div>
-
             <div className="Users-image-container">
               <div className="Users-image">
                 <span>
@@ -478,7 +454,6 @@ const mapDispatchToProps = (dispatch) => {
     getGenderStart: () => dispatch(actions.fetchGenderStart()),
     getPositionStart: () => dispatch(actions.fetchPositionStart()),
     getRoleStart: () => dispatch(actions.fetchRoleStart()),
-
     createNewUsers: (data) => dispatch(actions.createNewUsers(data)),
     fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
     editUsersRedux: (data) => dispatch(actions.editUsers(data)),

@@ -6,6 +6,7 @@ import Header from "../containers/Header/Header";
 // import UsersManage from "../containers/System/Users/UsersManage";
 import EmployerManage from "../containers/System/Employer/EmployerManage";
 import SeekerManage from "../containers/System/Seeker/SeekerManage";
+import PostRecruitManage from "../containers/System/Employer/PostRecruitManage";
 class System extends Component {
   render() {
     const { systemMenuPath, isLoggedIn } = this.props;
@@ -21,10 +22,7 @@ class System extends Component {
                 component={EmployerManage}
               />
               <Route path="/system/seeker-manage" component={SeekerManage} />
-              <Route
-                path="/system/employer-manage"
-                component={EmployerManage}
-              />
+              <Route path="/system/post-manage" component={PostRecruitManage} />
               <Route
                 component={() => {
                   return <Redirect to={systemMenuPath} />;

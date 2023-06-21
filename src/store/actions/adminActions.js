@@ -8,6 +8,9 @@ import {
   getTopCompanyService,
   getAllCompanys,
   saveDetailCompanyService,
+  savePostRecruitService,
+  getAllSeeker,
+  getAllPost,
 } from "../../services/userService";
 import { toast } from "react-toastify";
 export const fetchGenderStart = () => {
@@ -213,7 +216,33 @@ export const fetchAllUsersSuccess = (data) => ({
 });
 
 export const fetchAllUsersFailed = () => ({
-  type: actionTypes.FETCH_ALL_USERS_FALIED,
+  type: actionTypes.FETCH_ALL_USERS_FAILED,
+});
+
+export const fetchAllSeekerStart = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllSeeker("ALL");
+      console.log("check res fetch seeker:", getAllSeeker);
+      if (res && res.errCode === 0) {
+        dispatch(fetchAllSeekerSuccess(res.users.reverse()));
+      } else {
+        dispatch(fetchAllSeekerFailed());
+      }
+    } catch (e) {
+      dispatch(fetchAllUsersFailed());
+      console.log("fetchAllUsersFailed error", e);
+    }
+  };
+};
+
+export const fetchAllSeekerSuccess = (data) => ({
+  type: actionTypes.FETCH_ALL_SEEKER_SUCCESS,
+  users: data,
+});
+
+export const fetchAllSeekerFailed = () => ({
+  type: actionTypes.FETCH_ALL_SEEKER_FAILED,
 });
 
 export const fetchTopCompany = () => {
@@ -282,6 +311,54 @@ export const saveDetailCompany = (data) => {
       console.log("SAVE_DETAIL_CONPANY_FAILED: ", e);
       dispatch({
         type: actionTypes.SAVE_DETAIL_CONPANY_FAILED,
+      });
+    }
+  };
+};
+
+export const saveInforPost = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await savePostRecruitService(data);
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.SAVE_DETAIL_CONPANY_SUCCESS,
+        });
+        toast.success("Cập nhập thành công");
+      } else {
+        toast.error("Cập nhập thất bại");
+        dispatch({
+          type: actionTypes.SAVE_DETAIL_CONPANY_FAILED,
+        });
+      }
+    } catch (e) {
+      toast.error("Cập nhập thất bại");
+      console.log("SAVE_DETAIL_CONPANY_FAILED: ", e);
+      dispatch({
+        type: actionTypes.SAVE_DETAIL_CONPANY_FAILED,
+      });
+    }
+  };
+};
+
+export const fetchAllPost = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllPost("");
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_POST_SUCCESS,
+          dataCompanys: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_ALL_POST_FAILED,
+        });
+      }
+    } catch (e) {
+      console.log("FETCH_ALL_POST_FAILED: ", e);
+      dispatch({
+        type: actionTypes.FETCH_ALL_POST_FAILED,
       });
     }
   };

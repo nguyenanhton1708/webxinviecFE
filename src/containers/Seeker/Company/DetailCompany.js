@@ -32,7 +32,7 @@ class DetailCompany extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {}
 
   render() {
-    console.log("check check state:", this.state);
+    // console.log("check check state:", this.state);
     let { detailCompany } = this.state;
     return (
       <div>
@@ -57,6 +57,9 @@ class DetailCompany extends Component {
                   detailCompany.Markdown.description && (
                     <span>{detailCompany.Markdown.description}</span>
                   )}
+              </div>
+              <div>
+                <button>Theo dõi</button>
               </div>
             </div>
           </div>
@@ -85,10 +88,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    // fetchAllCompanys: (id) => dispatch(actions.fetchAllCompanys()),
-    // saveDetailCompany: (data) => dispatch(actions.saveDetailCompany(data)),
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailCompany);

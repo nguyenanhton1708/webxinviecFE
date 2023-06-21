@@ -1,0 +1,94 @@
+html {
+  font-size: 62.5%;
+}
+.employer-manage-post-container {
+  h1 {
+    text-align: center;
+    margin: 1rem auto;
+  }
+  .employer-title-post {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    .employer-title-text {
+      width: 70rem;
+      &:focus {
+        outline: 2px solid #456cb45e;
+        box-shadow: 1px 1px 10px 2px #3a58aa;
+      }
+    }
+  }
+  .employer-content-post {
+    margin-left: 2rem;
+    margin-top: 3rem;
+  }
+  .employer-manage-save {
+    margin: 1rem 3rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+    border: none;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  .employer-manage-edit {
+    margin: 1rem 3rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #0071ba;
+    color: white;
+    cursor: pointer;
+    border: none;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  .employer-manage-top {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    .employer-select {
+      width: 30%;
+      .employer-select-action {
+        width: 80%;
+      }
+    }
+  }
+  label {
+    font-size: 15px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    display: block;
+  }
+  h2 {
+    margin-top: 1rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    color: #0071ba;
+  }
+}
+.employer-show-post {
+  margin: 0 auto;
+  width: 70rem;
+  margin-top: 1rem;
+
+  .employer-post-item {
+    margin-top: 1rem;
+
+    border-bottom: 1px solid rgba(128, 128, 128, 0.452);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    .employer-image {
+      width: 10rem;
+      height: 10rem;
+      object-fit: cover;
+      margin-left: 5rem;
+    }
+    span {
+      margin-left: 1rem;
+      font-size: 2rem;
+    }
+  }
+}

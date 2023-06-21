@@ -19,6 +19,12 @@
       "employer": "Quản lý nhà tuyển dụng",
       "seeker": "Quản lý ứng viên",
       "blog": "Quản lý blog"
+    },
+    "employer": {
+      "manage": "Quản lý",
+      "infor": "Quản lý thông tin",
+      "post": "Quản lý bài tuyển dụng",
+      "recruit-manage": "Quản lý tuyển dụng"
     }
   },
   "manage-user": {
@@ -38,6 +44,7 @@
     "upload": "Tải ảnh",
     "save-btn": "Lưu người dùng",
     "edit-btn": "Lưu thay đổi",
-    "companyname": "Tên công ty"
+    "companyname": "Tên công ty",
+    "action": "Thao tác"
   }
 }

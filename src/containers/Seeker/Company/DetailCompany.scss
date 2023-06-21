@@ -1,3 +1,6 @@
+body {
+  background-color: #eee;
+}
 .company-detail-container {
   width: 60%;
   margin: 0 auto;
@@ -7,26 +10,46 @@
     display: flex;
     width: 100%;
     margin-bottom: 2rem;
-    border: 1px solid red;
-  }
-  .content-left {
-    margin-top: 1rem;
-    width: 40%;
-    height: 40rem;
-    background: center center no-repeat;
-    background-size: contain;
-  }
-  .content-right {
-    h1 {
-      font-size: 8rem;
+    padding: 1rem;
+    background-color: white;
+    .content-left {
+      margin-top: 1rem;
+      width: 40%;
+      height: 40rem;
+      background: center center no-repeat;
+      background-size: contain;
+      border: 1px solid gray;
     }
-    font-size: 15px;
-    margin-top: 1rem;
-    padding-left: 1rem;
-    width: 60%;
-    height: 40rem;
+    .content-right {
+      h1 {
+        font-size: 8rem;
+      }
+      font-size: 15px;
+      margin-top: 1rem;
+      padding-left: 1rem;
+      width: 60%;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      color: red;
+      border: 1px solid red;
+      background-color: white;
+      padding: 1rem;
+      width: 10rem;
+      margin-top: 5rem;
+      margin-left: 2rem;
+      font-weight: 600;
+      &:hover {
+        background-color: red;
+        color: white;
+      }
+    }
   }
+
   .company-recruit {
+    background-color: white;
+    padding: 1rem;
     margin-top: 1rem;
     font-size: 15px;
     margin-bottom: 10rem;

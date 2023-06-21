@@ -19,6 +19,12 @@
       "employer": "Employer Manage",
       "seeker": "Seeker Manage",
       "blog": "Blog Manage"
+    },
+    "employer": {
+      "manage": "Manage",
+      "infor": "Info Manage",
+      "post": "Recruitment post manage",
+      "recruit-manage": "Recruit manage"
     }
   },
   "manage-user": {
@@ -38,6 +44,7 @@
     "upload": "Upload",
     "save-btn": "Save user",
     "edit-btn": "Save change",
-    "companyname": "Company Name"
+    "companyname": "Company Name",
+    "action": "action"
   }
 }

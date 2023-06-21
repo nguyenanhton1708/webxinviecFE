@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import "./TableManageSeeker.scss";
 import * as actions from "../../../store/actions";
 import { dispatch } from "../../../redux";
+import { changeLanguageApp } from "../../../store/actions";
 
 class TableManageSeeker extends Component {
   constructor(props) {
@@ -23,6 +24,11 @@ class TableManageSeeker extends Component {
       });
     }
   }
+
+  changeLanguage = (language) => {
+    this.props.changeLanguageApp(language);
+  };
+
   handleDeleteUsers = (user) => {
     this.props.deleteUsersRedux(user.id);
   };
@@ -32,8 +38,6 @@ class TableManageSeeker extends Component {
   };
 
   render() {
-    console.log("check all users: ", this.props.users);
-    console.log("check all state: ", this.state.userRedux);
     let arrUsers = this.state.userRedux;
     return (
       <div className="Users-table-container">
@@ -41,11 +45,30 @@ class TableManageSeeker extends Component {
           <table>
             <thead>
               <tr>
-                <th>Email</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Address</th>
-                <th>Actions</th>
+                <th>
+                  {" "}
+                  <FormattedMessage id="manage-user.email" />
+                </th>
+                <th>
+                  {" "}
+                  <FormattedMessage id="manage-user.firstname" />
+                </th>
+                <th>
+                  {" "}
+                  <FormattedMessage id="manage-user.lastname" />
+                </th>
+                <th>
+                  {" "}
+                  <FormattedMessage id="manage-user.address" />
+                </th>
+                <th>
+                  {" "}
+                  <FormattedMessage id="manage-user.phone" />
+                </th>
+                <th>
+                  {" "}
+                  <FormattedMessage id="manage-user.action" />
+                </th>
               </tr>
             </thead>
             {arrUsers &&
@@ -58,6 +81,8 @@ class TableManageSeeker extends Component {
                       <td>{item.firstName}</td>
                       <td>{item.lastName}</td>
                       <td>{item.address}</td>
+                      <td>{item.phoneNumber}</td>
+
                       <td>
                         <button
                           className="btn-edit"
@@ -91,8 +116,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
+    fetchUserRedux: () => dispatch(actions.fetchAllSeekerStart()),
     deleteUsersRedux: (id) => dispatch(actions.deleteUsers(id)),
+    changeLanguageApp: (language) => dispatch(changeLanguageApp(language)),
   };
 };
 

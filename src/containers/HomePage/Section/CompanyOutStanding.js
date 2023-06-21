@@ -26,12 +26,12 @@ class CompanyOutStanding extends Component {
   }
 
   handleViewDetailCompany = (company) => {
-    console.log("check view infor:", company);
-
-    this.props.history.push(`/detail-company/${company.id}`);
+    if (this.props.history) {
+      this.props.history.push(`/detail-company/${company.id}`);
+    }
   };
   render() {
-    console.log(" check top companyredux:", this.props.topCompanysRedux);
+    // console.log(" check top companyredux:", this.props.topCompanysRedux);
     let { language } = this.props;
     let arrCompanys = this.state.arrCompanys;
     arrCompanys = arrCompanys.concat(arrCompanys).concat(arrCompanys);

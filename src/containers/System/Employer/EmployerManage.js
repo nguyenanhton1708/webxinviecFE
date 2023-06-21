@@ -10,7 +10,6 @@ import "react-markdown-editor-lite/lib/index.css";
 import { getDetailInforCompany } from "../../../services/userService";
 import Select from "react-select";
 import { CRUD_ACTIONS, LANGUAGES } from "../../../utils";
-
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 class EmployerManage extends Component {
@@ -22,7 +21,7 @@ class EmployerManage extends Component {
       selectedCompany: "",
       description: "",
       listCompanys: [],
-      // hasOldData: false,
+      hasOldData: false,
     };
   }
 
@@ -81,15 +80,15 @@ class EmployerManage extends Component {
         description: markdown.description,
         hasOldData: true,
       });
-      // } else {
-      //   this.setState({
-      //     contentHTML: "",
-      //     contentMarkdown: "",
-      //     description: "",
-      //     // hasOldData: true,
-      //   });
+    } else {
+      this.setState({
+        contentHTML: "",
+        contentMarkdown: "",
+        description: "",
+        hasOldData: false,
+      });
     }
-    console.log("check on change", selectedCompany);
+    // console.log("check on change", selectedCompany);
   };
   handleOnchangeDesc = (event) => {
     this.setState({
@@ -103,7 +102,7 @@ class EmployerManage extends Component {
     return (
       <div className="employer-manage-container">
         <div className="employer-manage-title">
-          <h1>Quản lý nhà tuyển dụng</h1>
+          <h1>Quản lý thông tin nhà tuyển dụng</h1>
         </div>
         <div className="employer-manage-editor">
           <div className="employer-manage-top">
@@ -126,7 +125,7 @@ class EmployerManage extends Component {
             </div>
           </div>
           <div>
-            <label>Nhập chi tiết tuyển dụng</label>
+            <label>Vì sao nên gia nhập công ty</label>
             <MdEditor
               style={{ height: "500px" }}
               renderHTML={(text) => mdParser.render(text)}
@@ -144,7 +143,7 @@ class EmployerManage extends Component {
           }
         >
           {hasOldData === true ? (
-            <span>Lưu thông tin</span>
+            <span>Sửa thông tin</span>
           ) : (
             <span>Tạo thông tin</span>
           )}

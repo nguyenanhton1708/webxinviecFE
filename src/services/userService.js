@@ -29,12 +29,24 @@ const getTopCompanyService = (limit) => {
 const getAllCompanys = () => {
   return axios.get(`/api/get-all-companys`);
 };
+
+const getAllSeeker = (inputId) => {
+  return axios.get(`/api/get-all-seeker?id=${inputId}`);
+};
 const saveDetailCompanyService = (data) => {
   return axios.post(`/api/save-infor-companys`, data);
 };
 
 const getDetailInforCompany = (inputId) => {
   return axios.get(`/api/get-detail-company?id=${inputId}`);
+};
+
+const savePostRecruitService = (data) => {
+  return axios.post(`/api/save-infor-post`, data);
+};
+
+const getAllPost = (inputId) => {
+  return axios.get(`/api/get-all-post?id=${inputId}`);
 };
 export {
   handleLoginApi,
@@ -47,4 +59,7 @@ export {
   getAllCompanys,
   saveDetailCompanyService,
   getDetailInforCompany,
+  savePostRecruitService,
+  getAllSeeker,
+  getAllPost,
 };

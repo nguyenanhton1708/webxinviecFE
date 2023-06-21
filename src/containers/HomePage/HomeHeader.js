@@ -5,6 +5,8 @@ import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../utils";
 import { changeLanguageApp } from "../../store/actions";
 import * as actions from "../../store/actions";
+import { withRouter } from "react-router";
+
 class HomeHeader extends Component {
   changeLanguage = (language) => {
     this.props.changeLanguageApp(language);
@@ -28,6 +30,18 @@ class HomeHeader extends Component {
       });
     }
   }
+
+  returnToHome = () => {
+    if (this.props.history) {
+      this.props.history.push(`/home`);
+    }
+  };
+
+  handleSignin = () => {
+    if (this.props.history) {
+      this.props.history.push(`/login`);
+    }
+  };
   render() {
     let citys = this.state.cityArr;
     let language = this.props.language;
@@ -44,6 +58,7 @@ class HomeHeader extends Component {
               <img
                 src="https://itviec.com/assets/logo-itviec-4492a2f2577a15a0a1d55444c21c0fa55810822b3b189fc689b450fb62ce0b5b.png"
                 className="logo"
+                onClick={() => this.returnToHome()}
               ></img>
             </div>
             <div className="header-left">
@@ -66,7 +81,7 @@ class HomeHeader extends Component {
                 <li>
                   <FormattedMessage id="homeheader.employers" />
                 </li>
-                <li>
+                <li onClick={() => this.handleSignin()}>
                   <FormattedMessage id="homeheader.signin" />
                 </li>
                 <li>
@@ -155,5 +170,6 @@ const mapDispatchToProps = (dispatch) => {
     getCityStart: () => dispatch(actions.fetchCityStart()),
   };
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(HomeHeader)
+);

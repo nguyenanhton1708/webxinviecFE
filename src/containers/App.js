@@ -15,6 +15,7 @@ import System from "../routes/System";
 import HomePage from "./HomePage/HomePage.js";
 import CustomScrollbars from "../components/CustomScrollbars";
 import DetailCompany from "./Seeker/Company/DetailCompany";
+import Employer from "../routes/Employer";
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -51,24 +52,15 @@ class App extends Component {
                     path={path.SYSTEM}
                     component={userIsAuthenticated(System)}
                   />
+                  <Route
+                    path={"/Employer/"}
+                    component={userIsAuthenticated(Employer)}
+                  />
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.DETAIL_COMPANY} component={DetailCompany} />
                 </Switch>
               </CustomScrollbars>
             </span>
-
-            {/* <ToastContainer
-              className="toast-container"
-              toastClassName="toast-item"
-              bodyClassName="toast-item-body"
-              autoClose={false}
-              hideProgressBar={true}
-              pauseOnHover={false}
-              pauseOnFocusLoss={true}
-              closeOnClick={false}
-              draggable={false}
-              closeButton={<CustomToastCloseButton />}
-            /> */}
 
             <ToastContainer
               position="bottom-right"
