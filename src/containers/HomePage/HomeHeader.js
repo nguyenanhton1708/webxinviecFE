@@ -42,6 +42,12 @@ class HomeHeader extends Component {
       this.props.history.push(`/login`);
     }
   };
+
+  handleRegister = () => {
+    if (this.props.history) {
+      this.props.history.push(`/Register`);
+    }
+  };
   render() {
     let citys = this.state.cityArr;
     let language = this.props.language;
@@ -84,7 +90,7 @@ class HomeHeader extends Component {
                 <li onClick={() => this.handleSignin()}>
                   <FormattedMessage id="homeheader.signin" />
                 </li>
-                <li>
+                <li onClick={() => this.handleRegister()}>
                   <FormattedMessage id="homeheader.signup" />
                 </li>
                 <li
@@ -129,10 +135,7 @@ class HomeHeader extends Component {
                 </div>
                 <div className="search-text">
                   <i className="fas fa-search"></i>
-                  <input
-                    type="text"
-                    placeholder="Tìm kiếm theo kỹ năng, chức vụ, công ty..."
-                  />
+                  <input type="text" />
                 </div>
                 <button className="search-click">
                   <FormattedMessage id="homeheader.search" />

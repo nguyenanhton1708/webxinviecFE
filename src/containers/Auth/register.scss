@@ -1,13 +1,12 @@
 html {
   font-size: 62.5%;
 }
-.login-background {
+.register-background {
   background-image: linear-gradient(13deg, #421563, #c31431a8);
   height: 100vh;
   position: relative;
-
-  .login-container {
-    width: 35rem;
+  .register-container {
+    width: 40rem;
     height: auto;
     position: absolute;
     top: 50%;
@@ -19,21 +18,39 @@ html {
     border-radius: 20px;
     font-size: 16px;
   }
-  .login-content {
+  .register-name {
+    display: flex;
+    justify-content: center;
+    .register-firstName {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 1rem;
+      width: calc(50%);
+    }
+    .register-lastName {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 1rem;
+
+      width: calc(50%);
+    }
+  }
+  .register-email {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 1rem;
+  }
+
+  .register-content {
     text-align: center;
     margin-top: 3rem;
     font-size: 2.5rem;
     font-weight: 700;
   }
-  .login-user {
+  .register-password {
     display: flex;
     flex-direction: column;
     margin: 2rem 1rem;
-  }
-  .login-password {
-    display: flex;
-    flex-direction: column;
-    margin: 0 1rem;
     .custom-input-password {
       position: relative;
       .input-password {
@@ -70,7 +87,7 @@ html {
     border: none;
     border-radius: 10px;
   }
-  .login-forgot {
+  .register-forgot {
     margin-left: 1rem;
     text-decoration: none;
     margin-bottom: 1rem;
@@ -83,7 +100,7 @@ html {
       font-size: 17px;
     }
   }
-  .login-social {
+  .register-social {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;

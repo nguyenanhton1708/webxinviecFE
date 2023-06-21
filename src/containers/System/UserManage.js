@@ -32,7 +32,6 @@ class UserManage extends Component {
       address: "",
       companyName: "",
       image: "",
-
       action: "",
       userEditId: "",
     };
@@ -205,7 +204,6 @@ class UserManage extends Component {
   render() {
     let language = this.props.language;
     let genders = this.state.genderArr;
-    let positions = this.state.positionArr;
     let roles = this.state.roleArr;
     let {
       email,
@@ -213,7 +211,6 @@ class UserManage extends Component {
       firstName,
       lastName,
       gender,
-      position,
       role,
       phoneNumber,
       companyName,

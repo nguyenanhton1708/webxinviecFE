@@ -10,8 +10,11 @@
     "city": "Tất cả thành phố",
     "search": "Tìm kiếm",
     "TopEmployers": "Nhà tuyển dụng nổi bật",
-    "welcome": "Xin chào"
+    "welcome": "Xin chào",
+    "outStanding": "Nhà tuyển dụng nổi bật",
+    "popular": "Nhà tuyển dụng phổ biến"
   },
+
   "menu": {
     "system": {
       "header": "Quản lý người dùng",

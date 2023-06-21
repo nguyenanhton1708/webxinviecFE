@@ -11,6 +11,7 @@ import {
 import { path } from "../utils";
 import Home from "../routes/Home";
 import Login from "./Auth/Login";
+import register from "./Auth/register";
 import System from "../routes/System";
 import HomePage from "./HomePage/HomePage.js";
 import CustomScrollbars from "../components/CustomScrollbars";
@@ -47,6 +48,10 @@ class App extends Component {
                   <Route
                     path={path.LOGIN}
                     component={userIsNotAuthenticated(Login)}
+                  />
+                  <Route
+                    path={path.REGISTER}
+                    component={userIsNotAuthenticated(register)}
                   />
                   <Route
                     path={path.SYSTEM}

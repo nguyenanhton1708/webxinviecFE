@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./CompanyOutStanding.scss";
-import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
 import * as actions from "../../../store/actions";
-import { LANGUAGES } from "../../../utils";
 import { withRouter } from "react-router";
+import { FormattedMessage } from "react-intl";
+import { changeLanguageApp } from "../../../store/actions";
 
 class CompanyOutStanding extends Component {
+  changeLanguage = (language) => {
+    this.props.changeLanguageApp(language);
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -31,8 +34,6 @@ class CompanyOutStanding extends Component {
     }
   };
   render() {
-    // console.log(" check top companyredux:", this.props.topCompanysRedux);
-    let { language } = this.props;
     let arrCompanys = this.state.arrCompanys;
     arrCompanys = arrCompanys.concat(arrCompanys).concat(arrCompanys);
     return (
@@ -40,7 +41,9 @@ class CompanyOutStanding extends Component {
         <div className="CompanyOutStanding-content">
           <div className="CompanyOutStanding-header">
             <h2>
-              <b>Nhà tuyển dụng nổi bật</b>
+              <b>
+                <FormattedMessage id="homeheader.outStanding" />
+              </b>
             </h2>
           </div>
           <div className="CompanyOutStanding-body">
@@ -92,6 +95,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     loadTopCompanys: () => dispatch(actions.fetchTopCompany()),
+    changeLanguageApp: (language) => dispatch(changeLanguageApp(language)),
   };
 };
 

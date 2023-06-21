@@ -57,22 +57,22 @@ class Login extends Component {
     return (
       <div className="login-background">
         <div className="login-container">
-          <div className="login-content">Login</div>
+          <div className="login-content">Đăng nhập</div>
           <div className="login-user">
-            <label>Username:</label>
+            <label>Email:</label>
             <input
               type="text"
-              placeholder="Enter your username"
+              placeholder="Nhập email"
               value={this.state.username}
               onChange={(event) => this.handleOnChangeUsername(event)}
             ></input>
           </div>
           <div className="login-password">
-            <label>Password: </label>
+            <label>Mật khẩu: </label>
             <div className="custom-input-password">
               <input
                 type={this.state.isShowPassword ? "text" : "password"}
-                placeholder="Enter your password"
+                placeholder="Nhập mật khẩu"
                 className="input-password"
                 value={this.state.password}
                 onChange={(event) => this.handleOnChangePassword(event)}
@@ -102,12 +102,12 @@ class Login extends Component {
                 this.handleLogin();
               }}
             >
-              Login
+              Đăng nhập
             </button>
           </div>
-          <span className="login-forgot">Forgot your password?</span>
+          <span className="login-forgot">Quên mật khẩu?</span>
           <div className="text-center">
-            <span> Or Login with:</span>
+            <span> Hoặc đăng nhập với </span>
           </div>
           <div className="login-social">
             <i className="fab fa-facebook-f facebook"></i>

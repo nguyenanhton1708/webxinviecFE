@@ -85,6 +85,9 @@ html {
       height: 10rem;
       object-fit: cover;
       margin-left: 5rem;
+      border: 1px solid rgba(128, 128, 128, 0.356);
+      background: center center no-repeat;
+      background-size: contain;
     }
     span {
       margin-left: 1rem;

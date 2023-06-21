@@ -10,7 +10,9 @@
     "city": "All cities",
     "search": "Search",
     "TopEmployers": "Top Employers",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "outStanding": "Outstanding Company",
+    "popular": "Popular Company"
   },
   "menu": {
     "system": {

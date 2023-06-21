@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Blog.scss";
 import { FormattedMessage } from "react-intl";
+import HomeFooter from "../HomeFooter";
 class Blog extends Component {
   render() {
     return (
