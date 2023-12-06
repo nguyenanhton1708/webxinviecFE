@@ -15,6 +15,10 @@ export default function Banner() {
   return (
     <div className="banner">
       <div className="banner__search">
+        <img
+          src="https://cdn.topdev.vn/v4/assets/images/bg-search.svg"
+          alt=""
+        ></img>
         <div className="banner__search--box">
           <div className="banner__search--box--title">
             <h4 className="text-center">
@@ -44,7 +48,7 @@ export default function Banner() {
             />
             <Link
               to={`jobs?name=${removeVietnameseTones(
-                name,
+                name
               )}&address=${removeVietnameseTones(address)}`}
               className="btn btn-primary"
             >

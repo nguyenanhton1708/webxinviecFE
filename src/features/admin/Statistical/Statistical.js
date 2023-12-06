@@ -17,7 +17,7 @@ export default function Statistical() {
         </div>
         <div className="heading__hr"></div>
       </div>
-      <div className="content_statistical">
+      {/* <div className="content_statistical">
         <div className="layout_one">
           <div className="box">
             <div className="box_title">Công ty</div>
@@ -58,7 +58,7 @@ export default function Statistical() {
             <div className="box_number">{data?.numTypeOfWork}</div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

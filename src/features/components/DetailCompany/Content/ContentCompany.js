@@ -74,30 +74,6 @@ export default function ContentCompany({ data }) {
                 </div>
               </div>
             </div>
-            <div className="company__box">
-              <div className="company__box__title">Liên hệ ngay</div>
-              <div className="company__box__email">
-                <form>
-                  <input
-                    type="text"
-                    name="yourName"
-                    placeholder="Tên của bạn"
-                  />
-                  <input
-                    type="text"
-                    name="yourEmail"
-                    placeholder="Email của bạn"
-                  />
-                  <input type="text" name="title" placeholder="Tiêu đề" />
-                  <input
-                    type="text"
-                    name="messager"
-                    placeholder="Tên của bạn"
-                  />
-                  <input type="submit" value="Gửi" />
-                </form>
-              </div>
-            </div>
           </div>
         </div>
       </div>

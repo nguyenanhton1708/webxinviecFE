@@ -18,7 +18,7 @@ export default function InforCompany() {
       {!user ? (
         <SpinLoad />
       ) : (
-        <div>
+        <div style={{ minHeight: "50rem" }}>
           {/* <MenuNotHome /> */}
           <Breadcrumb name={user.name} />
           <Tabs id={user.id} />

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../../scss/Home/ListJobs.scss";
-import logo from "../../../images/logoNew2.png";
 import { useDispatch, useSelector } from "react-redux";
 import { workData } from "../../../admin/Slice/workSlice";
 import SpinLoad from "../../Spin/Spin";

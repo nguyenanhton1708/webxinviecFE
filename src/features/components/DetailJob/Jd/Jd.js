@@ -11,7 +11,6 @@ import {
   checkDateDealtime,
   formatDateWork,
 } from "../../../container/Functionjs";
-import qc from "../../../images/1227.gif";
 import "../../../scss/DetailJob/Jd.scss";
 import KeyTag from "../../Jobs/ListJobs/KeyTag";
 export default function Jd(props) {
@@ -222,20 +221,6 @@ export default function Jd(props) {
                   {renderHTML(data.exprience ?? "")}
                 </div>
               </div>
-              <div>
-                <div className="job__box__title--jd">
-                  <p>Vị trí công ty</p>
-                </div>
-                <div className="job__box__content--jd">
-                  <div
-                    id="map-container-google-1"
-                    className="z-depth-1-half map-container"
-                    style={{ width: "100%" }}
-                  >
-                    {renderHTML(data.addressGoogle ?? "")}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div className="col-md-3">
@@ -262,12 +247,6 @@ export default function Jd(props) {
               <div className="save__box__title">
                 {notSave ? "Lưu công việc" : "Huỷ lưu công việc"}
               </div>
-            </div>
-            <div className="advertisement">
-              <img src={qc} alt="" />
-            </div>
-            <div className="box__keyTag">
-              <KeyTag />
             </div>
           </div>
         </div>

@@ -20,9 +20,9 @@ export default function RegisterUser() {
     resolver: yupResolver(schema),
   });
   const banner =
-    "https://static.ohga.it/wp-content/uploads/sites/24/2020/02/lavoro-precario-convivere.jpg";
+    "https://png.pngtree.com/thumb_back/fh260/background/20190220/ourmid/pngtree-blue-business-technology-user-image_6481.jpg";
   const avatar =
-    "https://vn-live-02.slatic.net/p/49c931dd11cde1e48fee9a07424a22dc.jpg";
+    "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg";
   const address = "Hà Nội";
   const history = useHistory();
   const onSubmit = (data) => {

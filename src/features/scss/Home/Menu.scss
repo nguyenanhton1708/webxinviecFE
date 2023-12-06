@@ -8,7 +8,7 @@
 nav .line_slide {
   height: 4px;
   width: 0px;
-  background-color: brown;
+  background-color: rgb(221, 63, 36);
   border-radius: 10px;
   position: absolute;
   transition: 0.5s;
@@ -49,7 +49,7 @@ nav .line_slide {
       padding: 0.5rem 0.6rem;
       transition: 0.5s;
       &:hover {
-        color: $bgButtonApply;
+        color: rgb(221, 63, 36);
       }
     }
   }
@@ -120,5 +120,8 @@ nav .line_slide {
         display: block;
       }
     }
+  }
+  .nav-link {
+    cursor: pointer;
   }
 }

@@ -163,7 +163,7 @@ export default function Nav() {
                 )
               }
             >
-              <Link to={`${match.url}/formCV`}>Form CV</Link>
+              {/* <Link to={`${match.url}/formCV`}>Form CV</Link>
             </Menu.Item>
             <Menu.Item
               key="8"
@@ -174,7 +174,7 @@ export default function Nav() {
                   <span className="fas fa-address-book mr-2"></span>
                 )
               }
-            >
+            > */}
               <Link to={`${match.url}/contact`}>Liên hệ</Link>
             </Menu.Item>
             <Menu.Item
@@ -212,7 +212,7 @@ export default function Nav() {
               {
                 className: "trigger",
                 onClick: toggle,
-              },
+              }
             )}
           </Header>
           <Content

@@ -22,9 +22,9 @@ export default function RegisterCompany() {
     resolver: yupResolver(schema),
   });
   const banner =
-    "https://phuoc-associates.com/wp-content/uploads/2019/10/5-Things-To-Keep-In-Mind-When-Opening-A-Company-In-Vietnam.jpg";
+    "https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2017/10/p-1-these-are-the-secrets-from-best-places-to-work-any-company-can-use.jpg";
   const avatar =
-    "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg";
+    "https://www.designevo.com/res/templates/thumb_small/hexagon-and-bar-graph.webp";
   const address = "Hà Nội";
   const dispatch = useDispatch();
   const history = useHistory();

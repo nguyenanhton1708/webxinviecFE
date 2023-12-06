@@ -69,55 +69,6 @@ export default function Footer() {
           <div className="col-lg-3">
             <div className="footer__box">
               <div className="footer__title">
-                <h3>Đường dẫn nhanh</h3>
-              </div>
-              <div className="footer__content">
-                <div className="row">
-                  <div className="col-lg-6">
-                    <ul>
-                      <li>
-                        <Link to="">Lập trình web</Link>
-                      </li>
-                      <li>
-                        <Link to="">Thiết kế đồ hoạ</Link>
-                      </li>
-                      <li>
-                        <Link to="">Trí tuệ nhân tạo</Link>
-                      </li>
-                      <li>
-                        <Link to="">Mạng máy tính</Link>
-                      </li>
-                      <li>
-                        <Link to="">Cơ sở dữ liệu</Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-lg-6">
-                    <ul>
-                      <li>
-                        <Link to="">JavaScript</Link>
-                      </li>
-                      <li>
-                        <Link to="">Python</Link>
-                      </li>
-                      <li>
-                        <Link to="">Java</Link>
-                      </li>
-                      <li>
-                        <Link to="">.NET</Link>
-                      </li>
-                      <li>
-                        <Link to="">HTML, CSS</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3">
-            <div className="footer__box">
-              <div className="footer__title">
                 <h3>Mạng xã hội</h3>
               </div>
               <div className="footer__content">

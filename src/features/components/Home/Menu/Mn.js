@@ -8,7 +8,7 @@ import {
   lineSlide,
   openMenu,
 } from "../../../container/Functionjs";
-import logo from "../../../images/logossss.png";
+import logo from "../../../images/logo.png";
 import "../../../scss/Home/Menu.scss";
 export default function Mn(props) {
   const okok = (bar_ref, nav_ref, line_ref) => {
@@ -81,7 +81,7 @@ export default function Mn(props) {
     <div className={props.class}>
       <div className="menu__brand">
         <Link to="/">
-          <img src={logo} height={40} alt="" />
+          <img src={logo} height={20} alt="" />
         </Link>
       </div>
       <div className="menu--right">

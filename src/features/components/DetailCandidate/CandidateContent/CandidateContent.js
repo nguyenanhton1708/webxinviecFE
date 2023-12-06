@@ -44,7 +44,7 @@ export default function CandidateContent({ data }) {
                 <div>
                   <div className="candidate__box__detail__title">Ngày sinh</div>
                   <div className="candidate__box__detail__content">
-                    06/03/2021
+                    02/11/2023
                   </div>
                 </div>
               </div>
@@ -97,30 +97,6 @@ export default function CandidateContent({ data }) {
                     )}
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="candidate__box">
-              <div className="candidate__box__title">Liên hệ ngay</div>
-              <div className="candidate__box__email">
-                <form>
-                  <input
-                    type="text"
-                    name="yourName"
-                    placeholder="Tên của bạn"
-                  />
-                  <input
-                    type="text"
-                    name="yourEmail"
-                    placeholder="Email của bạn"
-                  />
-                  <input type="text" name="title" placeholder="Tiêu đề" />
-                  <input
-                    type="text"
-                    name="messager"
-                    placeholder="Tên của bạn"
-                  />
-                  <input type="submit" value="Gửi" />
-                </form>
               </div>
             </div>
           </div>
